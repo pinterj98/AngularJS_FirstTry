@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html ng-app='Mod1App'>
+<head>
+  <meta charset="utf-8">
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+  <title>Angular JS Module 1 Solution</title>
+</head>
+<body>
+  <h1>Please enter the dishes you usually eat for lunch, separated by commas!</h1>
+  <div ng-controller='Mod1Controller'>
+    <input type="text"
+           ng-model="dishes">
+    <button ng-click='HowMany();'> "Check If Too Much"</button><br>
+    {{result}}
+  </div>
+</body>
+</html>
