@@ -17,7 +17,7 @@
             controller: NarrowItDownController,
             controllerAs: 'narrow',
             bindToController: true,
-            templateUrl: 'foundItems.html'
+            templateUrl: 'template.html'
         };
         return ddo;
     }
