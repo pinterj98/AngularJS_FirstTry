@@ -47,13 +47,16 @@
     MenuSearchService.$inject = ['$http', 'ApiBasePath'];
     function MenuSearchService($http, ApiBasePath) {
         var service = this;
+        if (!searchTerm) {
+          searchTerm='';
+        }
         service.getMatchedMenuItems = function(searchTerm) {
             return $http({
                 url: (ApiBasePath + "/menu_items.json")
             }).then(function(response) {
                 var foundItems = [];
                 for (var i = 0; i < response.data['menu_items'].length; i++) {
-                    if (searchTerm && searchTerm.length >=1 && response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
+                    if (response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
                         foundItems.push(response.data['menu_items'][i]);
                     }
                 }
