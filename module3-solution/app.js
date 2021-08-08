@@ -53,7 +53,9 @@
             }).then(function(response) {
                 var foundItems = [];
                 for (var i = 0; i < response.data['menu_items'].length; i++) {
-                    if (searchTerm && searchTerm.trim()>=1 && response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
+                  console.log(searchTerm);
+                  console.log(searchTerm.trim());
+                    if (searchTerm && searchTerm.trim().length>=1 && response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
                         foundItems.push(response.data['menu_items'][i]);
                     }
                 }
