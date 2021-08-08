@@ -7,15 +7,16 @@
         .directive('foundItems', FoundItems);
     function FoundItems() {
         var ddo = {
-            templateUrl: 'template.html',
-            scope: {
+           restrict: 'E',
+           scope: {
                 foundItems: '<',
                 empty: '<',
                 remove: '&'
             },
             controller: NarrowItDownController,
             controllerAs: 'narrow',
-            bindToController: true
+            bindToController: true,
+            templateUrl: 'template.html'
         };
         return ddo;
     }
