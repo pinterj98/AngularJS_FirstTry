@@ -5,11 +5,9 @@
         .service('MenuSearchService', MenuSearchService)
         .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
         .directive('foundItems', FoundItems);
-
     function FoundItems() {
         var ddo = {
-           restrict: 'E',
-           scope: {
+            scope: {
                 foundItems: '<',
                 empty: '<',
                 remove: '&'
@@ -17,7 +15,7 @@
             controller: NarrowItDownController,
             controllerAs: 'narrow',
             bindToController: true,
-            templateUrl: 'template.html'
+            templateUrl: 'template.html',
         };
         return ddo;
     }
@@ -53,7 +51,7 @@
             }).then(function(response) {
                 var foundItems = [];
                 for (var i = 0; i < response.data['menu_items'].length; i++) {
-                    if (response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
+                    if (searchTerm.length > 0 && response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
                         foundItems.push(response.data['menu_items'][i]);
                     }
                 }
