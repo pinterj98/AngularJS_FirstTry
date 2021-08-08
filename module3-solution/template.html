@@ -1,13 +1,8 @@
 <div>
     <div ng-repeat="item in narrow.foundItems">
-        <div>
-            <div>
-                <h2>{{item.name}}</h2>
-                <h3>{{item.short_name}}</h3>
-                <p>{{item.description}}</p>
-                <input type="button" ng-click="narrow.onRemove({index: $index})" value="Don't want this one!">
-            </div>
-        </div>
+        <h3>{{item.name}} - ({{item.short_name}})</h3>
+        <p>{{item.description}}</p>
+        <input type="button" ng-click="narrow.onRemove({index: $index})">Don't want this one!</input>
     </div>
 </div>
-<div class="alert alert-danger" role="alert" ng-show="narrow.onEmpty">{{narrow.onEmpty}}</div>
+<div ng-show="narrow.onEmpty">{{narrow.onEmpty}}</div>

@@ -1,19 +1,17 @@
-(function () {
-'use strict';
-
-angular.module('NarrowItDownApp', [])
-.controller('NarrowItDownController', NarrowItDownController)
-.service('MenuSearchService', MenuSearchService)
-.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('foundItems', FoundItems);;
-
-function FoundItems() {
+(function() {
+    'use strict';
+    angular.module('NarrowItDownApp', [])
+        .controller('NarrowItDownController', NarrowItDownController)
+        .service('MenuSearchService', MenuSearchService)
+        .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
+        .directive('foundItems', FoundItems);
+    function FoundItems() {
         var ddo = {
             templateUrl: 'template.html',
             scope: {
                 foundItems: '<',
-                onEmpty: '<',
-                onRemove: '&'
+                empty: '<',
+                remove: '&'
             },
             controller: NarrowItDownController,
             controllerAs: 'narrow',
@@ -22,9 +20,11 @@ function FoundItems() {
         return ddo;
     }
 
-NarrowItDownController .$inject = ['MenuSearchService'];
-function NarrowItDownController(MenuSearchService) {
+    NarrowItDownController.$inject = ['MenuSearchService'];
+    function NarrowItDownController(MenuSearchService) {
         var narrow = this;
+        narrow.shortName = '';
+
         narrow.matchedMenuItems = function(searchTerm) {
             var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
             promise.then(function(items) {
@@ -51,7 +51,7 @@ function NarrowItDownController(MenuSearchService) {
             }).then(function(response) {
                 var foundItems = [];
                 for (var i = 0; i < response.data['menu_items'].length; i++) {
-                    if (response.data['menu_items'][i]['description'].indexOf(searchTerm) !== -1) {
+                    if (response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
                         foundItems.push(response.data['menu_items'][i]);
                     }
                 }
