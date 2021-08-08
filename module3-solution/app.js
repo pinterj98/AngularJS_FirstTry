@@ -5,6 +5,7 @@
         .service('MenuSearchService', MenuSearchService)
         .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
         .directive('foundItems', FoundItems);
+
     function FoundItems() {
         var ddo = {
            restrict: 'E',
@@ -16,7 +17,7 @@
             controller: NarrowItDownController,
             controllerAs: 'narrow',
             bindToController: true,
-            templateUrl: 'template.html'
+            templateUrl: 'foundItems.html'
         };
         return ddo;
     }
