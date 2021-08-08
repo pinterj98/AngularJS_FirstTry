@@ -7,6 +7,7 @@
         .directive('foundItems', FoundItems);
     function FoundItems() {
         var ddo = {
+            templateUrl: 'template.html',
             scope: {
                 foundItems: '<',
                 empty: '<',
@@ -14,8 +15,7 @@
             },
             controller: NarrowItDownController,
             controllerAs: 'narrow',
-            bindToController: true,
-            templateUrl: 'template.html',
+            bindToController: true
         };
         return ddo;
     }
