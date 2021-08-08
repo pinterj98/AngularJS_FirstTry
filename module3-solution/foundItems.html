@@ -2,7 +2,7 @@
     <div ng-repeat="item in narrow.foundItems">
         <h3>{{item.name}} - ({{item.short_name}})</h3>
         <p>{{item.description}}</p>
-        <input type="button" ng-click="narrow.onRemove({index: $index})">Don't want this one!</input>
+        <input type="button" ng-click="narrow.remove({index: $index})">Don't want this one!</input>
     </div>
 </div>
-<div ng-show="narrow.onEmpty">{{narrow.onEmpty}}</div>
+<div ng-show="narrow.onEmpty">{{narrow.empty}}</div>
