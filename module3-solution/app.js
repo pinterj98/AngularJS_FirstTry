@@ -53,7 +53,7 @@
             }).then(function(response) {
                 var foundItems = [];
                 for (var i = 0; i < response.data['menu_items'].length; i++) {
-                    if (response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
+                    if (searchTerm && response.data['menu_items'][i]['description'].toLowerCase().indexOf(searchTerm) !== -1) {
                         foundItems.push(response.data['menu_items'][i]);
                     }
                 }
